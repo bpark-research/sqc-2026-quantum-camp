@@ -26,15 +26,24 @@
 강사의 안내에 따라 QuREKA 노트북 환경에서 이 저장소의 노트북을 열어 실행합니다.
 
 ### 2) 내 컴퓨터 (Linux, 또는 Windows의 WSL)
-Python 3.10 이상이 필요합니다.
+Python **3.11 이상**이 필요합니다. (`python3 --version`으로 확인)
 ```bash
-git clone https://github.com/<GITHUB_ID>/sqc-2026-quantum-camp.git
+git clone https://github.com/bpark-research/sqc-2026-quantum-camp.git
 cd sqc-2026-quantum-camp
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt jupyterlab
 jupyter lab
 ```
 NVIDIA GPU가 있으면 CUDA-Q가 자동으로 GPU 시뮬레이터(`nvidia`)를 사용합니다.
+
+#### 설치가 안 될 때
+- **`Your CUDA version (...) is too old`** 오류: 서버에 오래된 CUDA 툴킷이 함께 깔려 있으면 cudaq가 버전을 잘못 감지합니다. GPU 드라이버가 지원하는 CUDA 버전(`nvidia-smi` 오른쪽 위)에 맞는 패키지를 직접 설치하세요.
+  ```bash
+  pip install cuda-quantum-cu13==0.17.0   # CUDA 13.x 드라이버
+  pip install cuda-quantum-cu12==0.17.0   # CUDA 12.x 드라이버
+  pip install numpy scipy matplotlib networkx jupyterlab
+  ```
+- **Python 버전이 낮다는 오류**: 서버에 `python3.11` ~ `python3.13`이 있으면 그것으로 venv를 만드세요. (예: `python3.13 -m venv .venv`)
 
 > macOS에서는 CUDA-Q를 pip로 바로 설치할 수 없습니다. 아래 Colab을 이용하세요.
 
