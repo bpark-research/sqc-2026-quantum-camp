@@ -1,0 +1,5 @@
+cudaq==0.17.0
+numpy
+scipy
+matplotlib
+networkx
