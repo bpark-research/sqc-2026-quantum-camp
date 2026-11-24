@@ -1,0 +1,1 @@
+# sqc-2026-quantum-camp
